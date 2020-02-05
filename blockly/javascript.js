@@ -2,7 +2,7 @@ Blockly.JavaScript['posenet_init'] = function(block) {
   var value_input = Blockly.JavaScript.valueToCode(block, 'input', Blockly.JavaScript.ORDER_ATOMIC);
   var checkbox_duel = block.getFieldValue('duel') == 'TRUE';
   var code = 'await __WaPosenet__.init(' + value_input + ', ' + checkbox_duel + ');\n';
-  return [code, Blockly.JavaScript.ORDER_NONE];
+  return code;
 };
 
 Blockly.JavaScript['posenet_camera_input'] = function(block) {
