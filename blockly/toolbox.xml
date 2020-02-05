@@ -1,0 +1,14 @@
+<category id="catPosenet">
+  <block type="posenet_init">
+    <value name="input">
+      <block type="posenet_camera_input"></block>
+    </value>
+    <value name="threshold">
+      <block type="math_number">
+        <field name="NUM">0.5</field>
+      </block>
+    </value>
+  </block>
+  <block type="posenet_get_result"></block>
+  <block type="posenet_camera_input"></block>
+</category>

@@ -1,0 +1,17 @@
+{
+  "types": [
+    "posenet_init",
+    "posenet_camera_input"
+  ],
+  "category": "catPlus",
+  "scripts": [
+    "blockly/blocks.js",
+    "blockly/javascript.js"
+  ],
+  "dependencies": [
+    "pose.js"
+  ],
+  "msg": "blockly/msg",
+  "blocksMsg": "blockly/msg/blocks",
+  "toolbox": "blockly/toolbox.xml"
+}

@@ -1,0 +1,15 @@
+Blockly.Msg.WA_PosnetInit = 'Start Posenet';
+Blockly.Msg.WA_PosnetInit_Duel = 'Duel';
+Blockly.Msg.WA_Posnet_Camera = 'Camera';
+Blockly.Msg.WA_Posnet_Camera_Resolution = 'Resolution';
+Blockly.Msg.WA_Posnet_Camera_Mirror = 'Mirror';
+Blockly.Msg.WA_Posnet_Camera_Auto = 'Auti';
+Blockly.Msg.WA_Posnet_Camera_MFront = 'Mobile Front Camera';
+Blockly.Msg.WA_Posnet_Camera_MRear = 'Mobile Rear Camera';
+Blockly.Msg.WA_Posnet_PosX = 'X position';
+Blockly.Msg.WA_Posnet_PosY = 'Y position';
+Blockly.Msg.WA_Posnet_Score = 'score';
+Blockly.Msg.WA_Posnet_Get_Result1 = 'Get value from person';
+Blockly.Msg.WA_Posnet_Get_Result2 = 'part:';
+Blockly.Msg.WA_Posnet_Get_Result3 = 'type:';
+Blockly.Msg.WA_Posnet_Get_Result4 = '';

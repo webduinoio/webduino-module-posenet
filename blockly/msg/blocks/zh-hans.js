@@ -1,0 +1,15 @@
+Blockly.Msg.WA_PosnetInit = '启动姿态侦测';
+Blockly.Msg.WA_PosnetInit_Duel = '双人模式';
+Blockly.Msg.WA_Posnet_Camera = '摄影机';
+Blockly.Msg.WA_Posnet_Camera_Resolution = '解析度';
+Blockly.Msg.WA_Posnet_Camera_Mirror = '镜像';
+Blockly.Msg.WA_Posnet_Camera_Auto = '自动';
+Blockly.Msg.WA_Posnet_Camera_MFront = '行动装置前镜头';
+Blockly.Msg.WA_Posnet_Camera_MRear = '行动装置后镜头';
+Blockly.Msg.WA_Posnet_PosX = 'X座标';
+Blockly.Msg.WA_Posnet_PosY = 'Y座标';
+Blockly.Msg.WA_Posnet_Score = '信心分数';
+Blockly.Msg.WA_Posnet_Get_Result1 = '取得第';
+Blockly.Msg.WA_Posnet_Get_Result2 = '人关键部位';
+Blockly.Msg.WA_Posnet_Get_Result3 = '的';
+Blockly.Msg.WA_Posnet_Get_Result4 = '数值';

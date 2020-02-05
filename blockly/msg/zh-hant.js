@@ -1,0 +1,1 @@
+MSG.catPosenet = "姿態偵測";
