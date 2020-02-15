@@ -150,7 +150,10 @@
             video.height = v.height && v.height.exact || '480';
             video.srcObject = stream;
             video.autoplay = true;
-            video.style = "display: none;";
+            video.loop = true;
+            video.muted = true;
+            video.style = 'display: none;';
+            video.setAttribute('playsinline', true);
 
             document.body.appendChild(video);
             document.body.appendChild(canvas);
