@@ -11,10 +11,19 @@
     newScriptElement.text = req.responseText;
     headElement.appendChild(newScriptElement);
   }
-  
+
   function hasGetUserMedia() {
     return !!(navigator.mediaDevices &&
       navigator.mediaDevices.getUserMedia);
+  }
+
+  function addHTMLContent() {
+    const container = document.createElement('div');
+    const wrapper = document.createElement('div');
+    container.id = 'wa-posenet-container';
+    wrapper.id = 'wa-posenet-wrapper';
+    container.appendChild(wrapper);
+    document.body.appendChild(container);
   }
 
   loadJS('https://cdn.jsdelivr.net/npm/@tensorflow/tfjs');
@@ -39,7 +48,7 @@
           ctx: canvas.getContext('2d'),
         }
         canvas.id = 'wa-posenet-canvas'
-        canvas.style = "width: 100%; height: 100%;";
+        canvas.style = "display: block; width: 100%; height: 100%; position: absolute;";
 
         if (opts.flipHorizontal) {
           let headElement = document.getElementsByTagName("head")[0];
@@ -47,7 +56,7 @@
           headElement.appendChild(style);
           style.appendChild(
             document.createTextNode(
-              '#wa-posenet-canvas{-webkit-transform: scaleX(-1);transform: scaleX(-1);}'
+              '#wa-posenet-wrapper video, #wa-posenet-canvas {-webkit-transform: scaleX(-1);transform: scaleX(-1);}'
             )
           );
         }
@@ -56,6 +65,7 @@
       drawKeypoints(poseResults) {
         if (!this.canvas) return;
         const ctx = this.canvas.ctx;
+        ctx.clearRect(0, 0, this.canvas.el.width, this.canvas.el.width);
         poseResults.forEach((person, index) => {
           let adjpoints = posenet.getAdjacentKeyPoints(person.keypoints);
           adjpoints.forEach(points => {
@@ -92,6 +102,7 @@
 
     return {
       init: async function(imageSource, duel = false) {
+        addHTMLContent();
         if (imageSource.search(/^{\"source/) >= 0 && hasGetUserMedia()) {
           const inputObj = JSON.parse(imageSource);
                 imageSource = inputObj.source;
@@ -113,7 +124,7 @@
               }
             },
           };
-  
+
           if (deviceId.search(/^mobile/) >= 0) {
             let facingMode = { exact: 'environment' };
             if (deviceId === 'mobile_front') facingMode.exact = 'user';
@@ -124,8 +135,8 @@
           }
 
           let cvpainter = new CanvasPainter();
-          function predictWithVideo() {
-            net.estimateMultiplePoses(video, {
+          async function predictWithVideo() {
+            await net.estimateMultiplePoses(video, {
               flipHorizontal: false,
               maxDetections: duel ? 2 : 1,
               scoreThreshold: 0.5,
@@ -152,11 +163,13 @@
             video.autoplay = true;
             video.loop = true;
             video.muted = true;
-            video.style = 'display: none;';
+            video.style = "display: block; position: absolute; width: 100%; height: 100%;";
             video.setAttribute('playsinline', true);
 
-            document.body.appendChild(video);
-            document.body.appendChild(canvas);
+            const wrapper = document.getElementById('wa-posenet-wrapper');
+
+            wrapper.appendChild(video);
+            wrapper.appendChild(canvas);
             // add listener
             video.addEventListener('loadedmetadata', async () => {
               canvas.setAttribute('width', video.width);
@@ -179,7 +192,7 @@
               console.error('Permissions have not been granted to use your camera and ' +
               'microphone, you need to allow the page access to your devices in ' +
               'order for the demo to work.');
-            } 
+            }
             console.error(`getUserMedia error: ${error.name}`, error);
             document.body.innerText = error.name;
           }
